@@ -84,11 +84,12 @@ This repository contains the server application for serving files and their chec
         app.run(host='0.0.0.0', port=5000)
     ```
 
-5. **Ensure the client application is running and accessible at the specified URL (`http://client:5001`).**
+5. **Ensure the client application is running and accessible at the specified URL (`http://<IP>:5001`).**
 
 6. **Run the server application by building the Docker container and starting it with Docker Compose.**
 
 7. **Pull both the coded in one directory & run the docker compose up**
+![Screenshot 2024-03-03 at 11 16 59 AM](https://github.com/Itsnaeem/Dice-Project-Server/assets/46102040/005a95fc-9f81-4dec-9abf-34c0875c3d7e)
 
 ---
 
@@ -136,6 +137,11 @@ provider "aws" {
   region = "us-east-2"
 }
 ```
+![Screenshot 2024-03-02 at 12 59 50 PM](https://github.com/Itsnaeem/Dice-Project-Server/assets/46102040/0dd2711e-5fc0-4e7e-a020-e458b51a55f2)
+
+![Screenshot 2024-03-02 at 1 05 36 PM](https://github.com/Itsnaeem/Dice-Project-Server/assets/46102040/b8045437-46ea-4c01-afae-9a45bee69402)
+
+
 
 ## Part 3: Setting up Monitoring Stack
 
@@ -195,10 +201,15 @@ scrape_configs:
       - targets: ['localhost:9090']
 ```
 
+In monitoring directory run the command sudo docker-compose -f docker-compose.monitoring.yml up -d
+
+then the containers of prometheus, grafana & node-exporter is running.
+
 ### Dashboard Configuration
 
 Create dashboards in Grafana to visualize host system metrics and Docker container metrics, utilizing Prometheus as the data source.
 
+I import the dashboard for docker there is 193 ID & for machine logs 1860 ID.
 ---
 
 
@@ -269,6 +280,8 @@ jobs:
 
 In both repositories, go to Settings > Secrets and add the following secrets:
 
+I add the secrets there as.
+
 - `DOCKER_USERNAME`: Your Docker Hub username.
 - `DOCKER_PASSWORD`: Your Docker Hub password or access token.
 - `EC2_HOST`: Your VM's IP address or domain name.
@@ -281,3 +294,4 @@ In both repositories, go to Settings > Secrets and add the following secrets:
 
 With the GitHub Actions workflows configured, any push to the `main` branch will trigger the CI/CD pipeline, building your Docker images, deploying them to your VM, and sending a deployment notification via Gmail.
 
+After this I receive the notification on my email if the job is running, deployed & failed.
