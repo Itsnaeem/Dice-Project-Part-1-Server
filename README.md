@@ -98,7 +98,7 @@ This repository contains the server application for serving files and their chec
 
 ### 2a. AWS EC2 Instances Setup
 
-Create two AWS EC2 instances:
+Create AWS EC2 instance:
 - **Server Container Host**: To host the server application.
 
 Instance type for both: `t2.micro` (covered under the AWS free tier).
