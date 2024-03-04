@@ -100,7 +100,6 @@ This repository contains the server application for serving files and their chec
 
 Create two AWS EC2 instances:
 - **Server Container Host**: To host the server application.
-- **Client Container Host**: To host the client application.
 
 Instance type for both: `t2.micro` (covered under the AWS free tier).
 
@@ -111,6 +110,11 @@ Configure the VPC and subnets to allow communication between the two EC2 instanc
 ### 2c. Infrastructure Automation with Terraform
 
 Automate the creation of AWS resources using Terraform. Place Terraform scripts in the "terraform" directory within both the client and server repositories.
+
+For this task, we need to install AWS CLI & Terraform in our host machine.
+then configure the aws.
+
+'''aws configure'''
 
 #### Terraform Configuration Files
 
@@ -137,6 +141,14 @@ provider "aws" {
   region = "us-east-2"
 }
 ```
+
+then in terraform directory
+use these commands
+
+1. '''terraform init'''
+2. '''terraform plan'''
+3. '''terraform apply'''
+
 ![Screenshot 2024-03-02 at 12 59 50 PM](https://github.com/Itsnaeem/Dice-Project-Server/assets/46102040/0dd2711e-5fc0-4e7e-a020-e458b51a55f2)
 
 ![Screenshot 2024-03-02 at 1 05 36 PM](https://github.com/Itsnaeem/Dice-Project-Server/assets/46102040/b8045437-46ea-4c01-afae-9a45bee69402)
